@@ -3,14 +3,17 @@
 	import { EngageLightSpeed, setScene } from '$lib/lightSpeed.js';
 	import { onMount } from 'svelte';
 
+	// Stary Background
 	let lightSpeed;
 	onMount(async () => await setScene(lightSpeed));
 </script>
 
+<!-- Main Header -->
 <div class="justify-center items-center flex">
 	<div class="mt-72 font-black text-white tracking-widest text-6xl">THE SIMPSON GALAXY</div>
 </div>
 
+<!-- Lightspeed Button -->
 <div class="lg:flex mt-6 xl:mt-8 ml-6 justify-center items-center flex">
 	<button
 		on:click={() => {
