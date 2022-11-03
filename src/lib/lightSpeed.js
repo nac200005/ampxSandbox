@@ -54,7 +54,6 @@ const MoveForward = () => {
         // Update the vertices y values if too far
         if (v.y < -200) v.y = 200;
     }
-    console.log(v.velocity);
 }
 
 // The animate() function is used to manipulate the
