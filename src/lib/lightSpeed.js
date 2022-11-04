@@ -70,7 +70,7 @@ const animate = async () => {
 
 // The setScene() function is the primary function
 // for updating the scene data.
-export const setScene = async (canvas) => {
+export const SetScene = async (canvas) => {
 	// Render the new scene
 	Renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
 	Renderer.setSize(window.innerWidth, window.innerHeight);
@@ -90,7 +90,7 @@ export const setScene = async (canvas) => {
     SCENE.add(new THREE.Points(StarGeometry,
         new THREE.PointsMaterial({
             size: 0.2,
-            map: new THREE.TextureLoader().load('./star.png'),
+            map: new THREE.TextureLoader().load('./engage.hyperdrive/star.png'),
             transparent: true,
             depthWrite: false
           })

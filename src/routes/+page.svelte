@@ -1,11 +1,11 @@
 
 <script>
-	import { EngageLightSpeed, setScene } from '$lib/lightSpeed.js';
+	import { EngageLightSpeed, SetScene } from '$lib/LightSpeed.js';
 	import { onMount } from 'svelte';
 
 	// Stary Background
 	let lightSpeed;
-	onMount(async () => await setScene(lightSpeed));
+	onMount(async () => await SetScene(lightSpeed));
 </script>
 
 <!-- Main Header -->
@@ -18,7 +18,7 @@
 	<button
 		on:click={() => {
 			EngageLightSpeed();
-			setTimeout(() => window.location = "/planets", 2000)
+			setTimeout(() => window.location = "/engage.hyperdrive/planets", 2000)
 		}}
 		class="text-center items-center justify-center flex text-2xl p-4 w-42 h-10 xl:w-42 xl:h-12 backdrop-blur-sm text-white rounded-lg font-black tracking-widest hover:bg-white hover:tracking-[0.2em] hover:text-black duration-700 ease-in-out">
 		ENGAGE LIGHT SPEED
