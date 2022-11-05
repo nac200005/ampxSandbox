@@ -33,12 +33,12 @@ for (let i = 0; i < 2000; i++) {
             color: new THREE.Color("#FFFFFF")
         })
     );
+    SPHERE.velocity = 0;
     SPHERE.position.set(
         Math.random() * 600 - 300,
         Math.random() * 600 - 300,
         Math.random() * 600 - 300
     );
-    SPHERE.velocity = 0;
     STAR_GROUP.add(SPHERE);
 }
 SCENE.add(STAR_GROUP);
@@ -47,8 +47,8 @@ SCENE.add(STAR_GROUP);
 let Renderer, BloomComposer;
 
 // Engage Light Speed Button
-let LightSpeedEngaged = false;
-export const EngageLightSpeed = () => LightSpeedEngaged = true;
+let LightSpeedEngaged = 0;
+export const EngageLightSpeed = () => LightSpeedEngaged = 1;
 
 // The resize() function is used to resize the scene.
 // This is required for if the user resizes the site,
@@ -66,10 +66,51 @@ const resize = async () => {
 // Window Resize Listener
 window.addEventListener('resize', resize);
 
+// Used for engaging / disengaging lightspeed 
+// after a specific time
+let LightSpeedCounter = 0;
+
+// Move the stars forward uniformly
+const MoveForwardNeutral = () => {
+    for (let i = 0; i < STAR_GROUP.children.length; i++) {
+        let star = STAR_GROUP.children[i];
+
+        // Slow down the velocity and correct the star scale
+        if (star.scale.y > 1) star.scale.y -= 0.5;
+        if (star.velocity > 0.2) star.velocity -= 0.01;
+
+        // Update the star position
+        star.position.y -= star.velocity;
+        
+        // Update the vertices y values if too far
+        if (star.position.y < -200) star.position.y = 200;
+    }
+}
+
+// Move Stars Forwards
+const MoveForward = () => {
+    for (let i = 0; i < STAR_GROUP.children.length; i++) {
+        let star = STAR_GROUP.children[i];
+
+        // Increment LightSpeedCounter
+        LightSpeedCounter++;
+
+        // Change star scale
+        star.scale.y += 0.3;
+
+        // Integrate Uniform Velocity
+        star.velocity += 0.01;
+        star.position.y -= star.velocity;
+
+        // Update the vertices y values if too far
+        if (star.position.y < -200) star.position.y = 200;
+    }
+}
+
 // Move Stars Backwards
 const MoveBackward = () => {
     for (let i = 0; i < STAR_GROUP.children.length; i++) {
-        let star = STAR_GROUP.children[i]
+        let star = STAR_GROUP.children[i];
         // Integrate Uniform Velocity
         star.position.y += 0.1;
         // Update the vertices y values if too far
@@ -77,25 +118,23 @@ const MoveBackward = () => {
     }
 }
 
-// Move Stars Forwards
-const MoveForward = () => {
-    for (let i = 0; i < STAR_GROUP.children.length; i++) {
-        let star = STAR_GROUP.children[i]
-        // Change star scale
-        star.scale.y += 0.3;
-        // Integrate Uniform Velocity
-        star.velocity += 0.01;
-        star.position.y -= star.velocity;
-        // Update the vertices y values if too far
-        if (star.position.y < -200) star.position.y = 200;
-    }
-}
-
 // The animate() function is used to manipulate the
 // objects within the scene
 const animate = async () => {
     requestAnimationFrame(animate);
-    LightSpeedEngaged ? MoveForward() : MoveBackward()
+
+    // If The lightspeed has been engaged, move forward with acceleration,
+    // If the LightSpeedCounter reaches 1_000_000 then disengage light speed
+    if (LightSpeedEngaged == 1) LightSpeedCounter > 1_000_000 ? LightSpeedEngaged = 2 : MoveForward();
+
+    // Else if, the end of light speed, correct all stars
+    // and move forward uniformly
+    else if (LightSpeedEngaged == 2) MoveForwardNeutral();
+
+    // Else, move the stars backwards (start)
+    else MoveBackward();
+    
+    // Bloom Composer and Scene Renderer
     BloomComposer.render();
     Renderer.render(SCENE, CAMERA);
 };
