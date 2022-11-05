@@ -7,9 +7,17 @@
 
     // On Page Mount
     onMount(async () => {
+
+        // Get 'Simpson Computer Technologies Research' Github Data
         await self.fetch("https://api.github.com/users/Simpson-Computer-Technologies-Research/repos")
             .then(response => response.json())
-            .then(json => Repos = json)
+            .then(json => Repos = [...Repos, ...json])
+            .catch(error => console.log(error));
+
+        // Get 'realTristan' Github Data
+        await self.fetch("https://api.github.com/users/realTristan/repos")
+            .then(response => response.json())
+            .then(json => Repos = [...Repos, ...json])
             .catch(error => console.log(error));
     });
 </script>
