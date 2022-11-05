@@ -55,10 +55,6 @@
 	{/if}
 {/if}
 
-
-
-
-
 <!-- Galaxy Background Canvas-->
 <canvas 
 	bind:this={LightSpeedScene} 

@@ -26,7 +26,12 @@ BLOOM_PASS.radius = 0.1;
 
 // Add the Stars to the Scene
 const STAR_GROUP = new THREE.Group();
-for (let i = 0; i < 2000; i++) {
+
+// Star count based on screen size
+const STAR_COUNT = Math.sqrt((window.innerWidth**2) + (window.innerHeight**2))
+
+// Add the stars to the scene
+for (let i = 0; i < STAR_COUNT; i++) {
     const SPHERE = new THREE.Mesh(
         new THREE.SphereGeometry(0.17), 
         new THREE.MeshBasicMaterial({
