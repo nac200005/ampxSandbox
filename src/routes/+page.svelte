@@ -9,6 +9,7 @@
 	// Import Components
 	import WelcomeUser from './components/WelcomeUser.svelte';
 	import SimpsonGalaxyTitle from './components/SimpsonGalaxyTitle.svelte';
+	import Projects from './components/Projects.svelte';
 
 	// Galaxy Background
 	let LightSpeedScene;
@@ -21,16 +22,16 @@
 <!-- Main Header -->
 {#if !ShowPlanets}
 	<!-- "TRISTAN SIMPSON" Title -->
-	<div class="justify-center items-center flex" out:fade={{ duration: 350 }}>
+	<div class="justify-center items-center flex" out:fade={{ duration: 600 }}>
 		<div class="mt-72 font-black text-white tracking-widest text-6xl">
-			TRISTAN
-			<mark style="background: none; color: #FF0055">+</mark>
 			SIMPSON
+			<mark style="background: none; color: #FF0055">+</mark>
+			RESEARCH
 		</div>
 	</div>
-		
+	
 	<!-- "ENGAGE LIGHTSPEED" Button -->
-	<div class="lg:flex mt-6 xl:mt-8 justify-center items-center flex" out:fade={{ duration: 350 }}>
+	<div class="lg:flex mt-6 xl:mt-8 justify-center items-center flex" out:fade={{ duration: 600 }}>
 		<button
 			on:click={async () => {
 				setTimeout(async () => ShowPlanets = true, 3400);
@@ -48,7 +49,10 @@
 	{#if !ShowSimpsonGalaxyHeader} <WelcomeUser/> {/if}
 
 	<!-- "THE SIMPSON GALAXY" Title -->
-	{#if ShowSimpsonGalaxyHeader} <SimpsonGalaxyTitle/> {/if}
+	{#if ShowSimpsonGalaxyHeader} 
+		<SimpsonGalaxyTitle/>
+		<Projects/>
+	{/if}
 {/if}
 
 
@@ -58,5 +62,5 @@
 <!-- Galaxy Background Canvas-->
 <canvas 
 	bind:this={LightSpeedScene} 
-	style="position: absolute; top: 0; left: 0; z-index: -1;"
+	style="position: absolute; top: 0; left: 0; z-index: -1; position: fixed;"
 />

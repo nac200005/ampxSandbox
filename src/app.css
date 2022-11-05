@@ -9,4 +9,4 @@ html { scroll-behavior: smooth; }
 :root::-webkit-scrollbar { width: 0.25rem; }
 :root::-webkit-scrollbar-track { background: transparent; }
 :root::-webkit-scrollbar-thumb { background: #696969; }
-:root::-webkit-scrollbar-thumb:hover { background: #38ffff; }
+:root::-webkit-scrollbar-thumb:hover { background: #FF0055; }

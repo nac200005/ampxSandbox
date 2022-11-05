@@ -2,9 +2,10 @@
 
 <!-- "THE SIMPSON GALAXY" Title -->
 <div class="justify-center items-center flex" in:fade={{ delay: 400, duration: 1200 }}>
-    <div class="mt-24 font-black text-white tracking-widest text-5xl">
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <div class="mt-24 mb-10 font-black text-white tracking-widest text-6xl cursor-pointer hover:tracking-[0.25em] duration-500 ease-in-out" on:click={() => window.location.reload()}>
         THE 
-        <mark style="background: none; color: #FF0055; font-size: 4rem">SIMPSON</mark>
-        <mark style="background: none; color: white; font-size: 4rem">GALAXY</mark>
+        <mark style="background: none; color: #FF0055;">SIMPSON</mark>
+        GALAXY
     </div>
 </div>
