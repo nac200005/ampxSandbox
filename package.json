@@ -25,6 +25,6 @@
 		"gh-pages": "^4.0.0",
 		"simplenoise": "^1.0.1",
 		"svelte-inview": "^3.0.1",
-		"three": "^0.124.0"
+		"three": "^0.146.0"
 	}
 }

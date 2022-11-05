@@ -1,15 +1,50 @@
 import * as THREE from 'three';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 
 // Establish a new scene
 const SCENE = new THREE.Scene();
 
+// Ambient Lighting to Scene Objects
+SCENE.add(new THREE.AmbientLight(0xffffff, 0.1));
+
 // Establish a new perspective camera and set it's position
-const CAMERA = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 1, 2000);
+const CAMERA = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.1, 1000);
 CAMERA.position.z = 1.5;
 CAMERA.rotation.x = Math.PI/2;
 
+// Bloom Renderer
+const RENDER_SCENE = new RenderPass(SCENE, CAMERA);
+const BLOOM_PASS = new UnrealBloomPass(
+    new THREE.Vector2(window.innerWidth, window.innerHeight), 
+    1.5, 0.4, 100
+);
+BLOOM_PASS.threshold = 0;
+BLOOM_PASS.strength = 0.5;
+BLOOM_PASS.radius = 0.1;
+
+// Add the Stars to the Scene
+const STAR_GROUP = new THREE.Group();
+for (let i = 0; i < 2000; i++) {
+    const SPHERE = new THREE.Mesh(
+        new THREE.SphereGeometry(0.17), 
+        new THREE.MeshBasicMaterial({
+            color: new THREE.Color("#FFFFFF")
+        })
+    );
+    SPHERE.position.set(
+        Math.random() * 600 - 300,
+        Math.random() * 600 - 300,
+        Math.random() * 600 - 300
+    );
+    SPHERE.velocity = 0;
+    STAR_GROUP.add(SPHERE);
+}
+SCENE.add(STAR_GROUP);
+
 // Renderer and Star Geometry Variables
-let Renderer, StarGeometry;
+let Renderer, BloomComposer;
 
 // Engage Light Speed Button
 let LightSpeedEngaged = false;
@@ -33,68 +68,53 @@ window.addEventListener('resize', resize);
 
 // Move Stars Backwards
 const MoveBackward = () => {
-    for (let i = 0; i < StarGeometry.vertices.length; i++) {
-        var v = StarGeometry.vertices[i];
+    for (let i = 0; i < STAR_GROUP.children.length; i++) {
+        let star = STAR_GROUP.children[i]
         // Integrate Uniform Velocity
-        v.y += 0.2;
+        star.position.y += 0.1;
         // Update the vertices y values if too far
-        if (v.y > 200) v.y = 0;
+        if (star.position.y > 200) star.position.y = -200;
     }
 }
 
 // Move Stars Forwards
 const MoveForward = () => {
-    for (let i = 0; i < StarGeometry.vertices.length; i++) {
-        var v = StarGeometry.vertices[i];
-
-        // Integrate Non-Uniform Velocity
-        v.velocity += 0.01;
-        v.y -= v.velocity;
-        
+    for (let i = 0; i < STAR_GROUP.children.length; i++) {
+        let star = STAR_GROUP.children[i]
+        // Change star scale
+        star.scale.y += 0.3;
+        // Integrate Uniform Velocity
+        star.velocity += 0.01;
+        star.position.y -= star.velocity;
         // Update the vertices y values if too far
-        if (v.y < -200) v.y = 200;
+        if (star.position.y < -200) star.position.y = 200;
     }
 }
 
 // The animate() function is used to manipulate the
 // objects within the scene
 const animate = async () => {
-    // Check which direction to move the stars
-    LightSpeedEngaged ? MoveForward() : MoveBackward()
-    StarGeometry.verticesNeedUpdate = true;
-    
-    // Render the scene and camera
-    Renderer.render(SCENE, CAMERA);
     requestAnimationFrame(animate);
+    LightSpeedEngaged ? MoveForward() : MoveBackward()
+    BloomComposer.render();
+    Renderer.render(SCENE, CAMERA);
 };
 
 // The setScene() function is the primary function
 // for updating the scene data.
 export const SetScene = async (canvas) => {
 	// Render the new scene
-	Renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
+	Renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true});
 	Renderer.setSize(window.innerWidth, window.innerHeight);
+    Renderer.autoClear = false;
 
-    // Adding the stars to the star geometry variable
-    StarGeometry = new THREE.Geometry();
-    for (let i = 0; i < 2000; i++) {
-        var star = new THREE.Vector3(
-            Math.random() * 600 - 300,
-            Math.random() * 600 - 300,
-            Math.random() * 600 - 300
-        );
-        star.velocity = 0;
-        StarGeometry.vertices.push(star);
-    }
-    // Add the stars to the scene
-    SCENE.add(new THREE.Points(StarGeometry,
-        new THREE.PointsMaterial({
-            size: 0.2,
-            map: new THREE.TextureLoader().load('./engage.hyperdrive/star.png'),
-            transparent: true,
-            depthWrite: false
-          })
-    ));
+    // Bloom Composer
+    BloomComposer = new EffectComposer(Renderer);
+    BloomComposer.setSize(window.innerWidth, window.innerHeight);
+    BloomComposer.renderToScreen = true;
+    BloomComposer.addPass(RENDER_SCENE);
+    BloomComposer.addPass(BLOOM_PASS);
+    BloomComposer.render();
 
 	// Size the scene
 	await resize();
