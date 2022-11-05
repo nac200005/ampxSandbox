@@ -2,7 +2,7 @@ import { publish } from 'gh-pages';
 
 publish('build', {
         branch: 'gh-pages',
-        repo: 'https://github.com/realTristan/engage.hyperdrive.git',
+        repo: 'https://github.com/realTristan/simpsonresearch.ca.git',
         dotfiles: true,
         user: {
             name: 'Tristan Simpson',
