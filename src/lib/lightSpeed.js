@@ -161,7 +161,7 @@ const animate = async () => {
 // for updating the scene data.
 export const SetScene = async (canvas) => {
 	// Render the new scene
-	Renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true});
+	Renderer = new THREE.WebGLRenderer({ canvas: canvas });
 	Renderer.setSize(window.innerWidth, window.innerHeight);
     Renderer.autoClear = false;
 
