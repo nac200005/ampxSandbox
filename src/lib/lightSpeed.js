@@ -29,7 +29,7 @@ const STAR_GROUP = new THREE.Group();
 
 // Star count based on screen size
 const STAR_COUNT = Math.floor(
-    Math.sqrt((window.innerWidth**2) + (window.innerHeight**2))
+    Math.sqrt((window.innerHeight**2) + (window.innerHeight**2))
 );
 
 // The constant acceleration of the starts once
@@ -40,7 +40,7 @@ const STAR_ACCELERATION =
 
 // Determine when to stop light speed based on
 // the users screen width
-const COUNTER_MAX = (STAR_COUNT * STAR_COUNT) / 5;
+const COUNTER_MAX = (STAR_COUNT * STAR_COUNT) / 3;
 
 // Add the stars to the scene
 for (let i = 0; i < STAR_COUNT; i++) {
@@ -94,7 +94,7 @@ const MoveForwardNeutral = () => {
 
         // Slow down the velocity and correct the star scale
         if (star.scale.y > 1) star.scale.y -= 0.5;
-        if (star.velocity > 0.2) star.velocity -= STAR_ACCELERATION;
+        if (star.velocity > 0.2) star.velocity -= 0.05;
 
         // Update the star position
         star.position.y -= star.velocity;
@@ -116,9 +116,10 @@ const MoveForward = () => {
         star.scale.y += 0.3;
 
         // Integrate Uniform Velocity
-        star.velocity += STAR_ACCELERATION;
+        if (star.velocity < 7) 
+            star.velocity += STAR_ACCELERATION;
         star.position.y -= star.velocity;
-
+    
         // Update the vertices y values if too far
         if (star.position.y < -200) star.position.y = 200;
     }
