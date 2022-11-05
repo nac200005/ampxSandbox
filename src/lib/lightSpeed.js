@@ -28,7 +28,19 @@ BLOOM_PASS.radius = 0.1;
 const STAR_GROUP = new THREE.Group();
 
 // Star count based on screen size
-const STAR_COUNT = Math.sqrt((window.innerWidth**2) + (window.innerHeight**2))
+const STAR_COUNT = Math.floor(
+    Math.sqrt((window.innerWidth**2) + (window.innerHeight**2))
+);
+
+// The constant acceleration of the starts once
+// light speed is engaged
+const STAR_COUNT_LENGTH = STAR_COUNT.toString().length;
+const STAR_ACCELERATION = 
+    (STAR_COUNT / STAR_COUNT_LENGTH) / (10 ** STAR_COUNT_LENGTH);
+
+// Determine when to stop light speed based on
+// the users screen width
+const COUNTER_MAX = (STAR_COUNT * STAR_COUNT) / 5;
 
 // Add the stars to the scene
 for (let i = 0; i < STAR_COUNT; i++) {
@@ -82,7 +94,7 @@ const MoveForwardNeutral = () => {
 
         // Slow down the velocity and correct the star scale
         if (star.scale.y > 1) star.scale.y -= 0.5;
-        if (star.velocity > 0.2) star.velocity -= 0.01;
+        if (star.velocity > 0.2) star.velocity -= STAR_ACCELERATION;
 
         // Update the star position
         star.position.y -= star.velocity;
@@ -104,7 +116,7 @@ const MoveForward = () => {
         star.scale.y += 0.3;
 
         // Integrate Uniform Velocity
-        star.velocity += 0.01;
+        star.velocity += STAR_ACCELERATION;
         star.position.y -= star.velocity;
 
         // Update the vertices y values if too far
@@ -129,8 +141,8 @@ const animate = async () => {
     requestAnimationFrame(animate);
 
     // If The lightspeed has been engaged, move forward with acceleration,
-    // If the LightSpeedCounter reaches 1_000_000 then disengage light speed
-    if (LightSpeedEngaged == 1) LightSpeedCounter > 1_000_000 ? LightSpeedEngaged = 2 : MoveForward();
+    // If the LightSpeedCounter reaches COUNTER_MAX then disengage light speed
+    if (LightSpeedEngaged == 1) LightSpeedCounter > COUNTER_MAX ? LightSpeedEngaged = 2 : MoveForward();
 
     // Else if, the end of light speed, correct all stars
     // and move forward uniformly
