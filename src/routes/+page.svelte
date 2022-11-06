@@ -17,6 +17,9 @@
 
 	// Header Management Variables
 	let ShowPlanets, ShowSimpsonGalaxyHeader = false;
+
+	// Get the screen hypoteneuse for better accuracy
+	const SCREEN_SIZE = Math.sqrt((window.innerHeight ** 2) + (window.innerWidth ** 2))
 </script>
 
 <!-- Main Header -->
@@ -34,8 +37,8 @@
 	<div class="mt-6 justify-center items-center flex mr-8" out:fade={{ duration: 600 }}>
 		<button
 			on:click={async () => {
-				setTimeout(async () => ShowPlanets = true, window.innerHeight*3);
-				setTimeout(async () => ShowSimpsonGalaxyHeader = true, window.innerHeight*7)
+				setTimeout(async () => ShowPlanets = true, SCREEN_SIZE);
+				setTimeout(async () => ShowSimpsonGalaxyHeader = true, SCREEN_SIZE * 2.5)
 				EngageLightSpeed();
 			}}
 			class="px-4 text-xl md:text-2xl w-42 h-12 backdrop-blur-sm text-white rounded-lg font-black tracking-widest hover:bg-white hover:tracking-[0.2em] hover:text-black duration-700 ease-in-out">
