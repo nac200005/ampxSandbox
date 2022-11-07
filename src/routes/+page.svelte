@@ -19,8 +19,9 @@
 		// Check if user is trying to query repos
 		const LOCATION = window.location.href.split("?")[1];
 		if (LOCATION != undefined) {
-			window.location.assign("https://simpsonresearch.ca/search?" + LOCATION);
-			return;
+			return window.location.assign(
+				window.location.origin + "/search?query=" + LOCATION
+			);
 		}
 		// Else, set the galaxy background scene
 		await SetScene(LightSpeedScene)

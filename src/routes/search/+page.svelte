@@ -8,7 +8,7 @@
     import { onMount } from "svelte";
 
     // Get the search word
-    const SEARCH_WORD = window.location.href.split("?")[1]
+    const SEARCH_WORD = new URLSearchParams(window.location.search).get("query");
 
     // Galaxy Background
 	let LightSpeedScene;
