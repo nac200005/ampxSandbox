@@ -5,11 +5,10 @@
 
     // Import Libraries
     import { fade } from "svelte/transition";
-    import { page } from "$app/stores";
     import { onMount } from "svelte";
 
     // Get the search word
-    const SEARCH_WORD = $page.params.search;
+    const SEARCH_WORD = window.location.href.split("?")[1]
 
     // Galaxy Background
 	let LightSpeedScene;

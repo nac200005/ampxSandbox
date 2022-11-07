@@ -1,8 +1,4 @@
 <script>
-	// Page rendering
-	export const ssr = false;
-    export const prerender = true;
-
 	// Import Three.js Scene Functions
 	import { EngageLightSpeed, SetScene } from '$lib/LightSpeed.js';
 
@@ -17,7 +13,18 @@
 
 	// Galaxy Background
 	let LightSpeedScene;
-	onMount(async () => await SetScene(LightSpeedScene));
+
+	// On site load
+	onMount(async () => {
+		// Check if user is trying to query repos
+		const LOCATION = window.location.href.split("?")[1];
+		if (LOCATION != undefined) {
+			window.location.assign("http://127.0.0.1:5173/search?" + LOCATION);
+			return;
+		}
+		// Else, set the galaxy background scene
+		await SetScene(LightSpeedScene)
+	});
 
 	// Header Management Variables
 	let ShowPlanets, ShowSimpsonGalaxyHeader = false;
