@@ -1,4 +1,8 @@
 <script>
+	// Page rendering
+	export const ssr = false;
+    export const prerender = true;
+
 	// Import Three.js Scene Functions
 	import { EngageLightSpeed, SetScene } from '$lib/LightSpeed.js';
 

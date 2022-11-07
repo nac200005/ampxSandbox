@@ -5,7 +5,7 @@ import preprocess from "svelte-preprocess";
 const config = {
 	preprocess: [
 		preprocess({
-		  postcss: true,
+		  	postcss: true,
 		}),
 	  ],
 	kit: {
@@ -13,7 +13,12 @@ const config = {
 			pages: 'build',
 			assets: 'build',
 			fallback: null
-		})
+		}),
+		prerender: {
+			crawl: true,
+			enabled: true,
+			entries: ["*", "/", "/[search"],
+		  }
 	}
 };
 
