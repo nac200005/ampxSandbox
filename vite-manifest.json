@@ -1,11 +1,11 @@
 {
   "node_modules/@sveltejs/kit/src/runtime/client/start.js": {
-    "file": "_app/immutable/start-b8ce7510.js",
+    "file": "_app/immutable/start-31293960.js",
     "src": "node_modules/@sveltejs/kit/src/runtime/client/start.js",
     "isEntry": true,
     "imports": [
       "_index-ac04eb27.js",
-      "_singletons-23baa958.js"
+      "_singletons-9f0494d0.js"
     ],
     "dynamicImports": [
       ".svelte-kit/generated/nodes/0.js",
@@ -27,12 +27,12 @@
     ]
   },
   "node_modules/@sveltejs/kit/src/runtime/components/error.svelte": {
-    "file": "_app/immutable/components/error.svelte-ef421a76.js",
+    "file": "_app/immutable/components/error.svelte-7d8ab035.js",
     "src": "node_modules/@sveltejs/kit/src/runtime/components/error.svelte",
     "isEntry": true,
     "imports": [
       "_index-ac04eb27.js",
-      "_singletons-23baa958.js"
+      "_singletons-9f0494d0.js"
     ]
   },
   "src/routes/search/+layout.svelte": {
@@ -47,7 +47,7 @@
     ]
   },
   "src/routes/+page.svelte": {
-    "file": "_app/immutable/components/pages/_page.svelte-ae885c1d.js",
+    "file": "_app/immutable/components/pages/_page.svelte-db40fbd9.js",
     "src": "src/routes/+page.svelte",
     "isEntry": true,
     "imports": [
@@ -80,8 +80,8 @@
       "__page-2d106bb9.js"
     ]
   },
-  "_singletons-23baa958.js": {
-    "file": "_app/immutable/chunks/singletons-23baa958.js",
+  "_singletons-9f0494d0.js": {
+    "file": "_app/immutable/chunks/singletons-9f0494d0.js",
     "imports": [
       "_index-ac04eb27.js"
     ]
@@ -110,7 +110,7 @@
     ]
   },
   ".svelte-kit/generated/nodes/1.js": {
-    "file": "_app/immutable/chunks/1-f387bb7e.js",
+    "file": "_app/immutable/chunks/1-115d627c.js",
     "src": ".svelte-kit/generated/nodes/1.js",
     "isDynamicEntry": true,
     "imports": [
@@ -126,7 +126,7 @@
     ]
   },
   ".svelte-kit/generated/nodes/3.js": {
-    "file": "_app/immutable/chunks/3-5c0f31b3.js",
+    "file": "_app/immutable/chunks/3-54e61ce0.js",
     "src": ".svelte-kit/generated/nodes/3.js",
     "isDynamicEntry": true,
     "imports": [
