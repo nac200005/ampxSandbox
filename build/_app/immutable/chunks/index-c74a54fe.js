@@ -1,4 +1,4 @@
-import{O as Oa}from"./index-a7eae2ae.js";/**
+import{N as Oa}from"./index-6147ecbe.js";/**
  * @license
  * Copyright 2010-2022 Three.js Authors
  * SPDX-License-Identifier: MIT
