@@ -1,3 +1,7 @@
+<svelte:head>
+  <style> body { background: black; } </style>
+</svelte:head>
+
 <script>
 	// Import Three.js Scene Functions
 	import { EngageLightSpeed, SetScene } from '$lib/LightSpeed.js';
