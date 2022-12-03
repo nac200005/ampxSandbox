@@ -1,6 +1,6 @@
 {
   "node_modules/@sveltejs/kit/src/runtime/client/start.js": {
-    "file": "_app/immutable/start-cc9e5905.js",
+    "file": "_app/immutable/start-43aaef99.js",
     "src": "node_modules/@sveltejs/kit/src/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -55,7 +55,7 @@
     ]
   },
   "src/routes/latex/+page.svelte": {
-    "file": "_app/immutable/components/pages/latex/_page.svelte-0af1fe0f.js",
+    "file": "_app/immutable/components/pages/latex/_page.svelte-69d57297.js",
     "src": "src/routes/latex/+page.svelte",
     "isEntry": true,
     "imports": [
@@ -147,7 +147,7 @@
     ]
   },
   ".svelte-kit/generated/nodes/4.js": {
-    "file": "_app/immutable/chunks/4-db487012.js",
+    "file": "_app/immutable/chunks/4-b57b7c7d.js",
     "src": ".svelte-kit/generated/nodes/4.js",
     "isDynamicEntry": true,
     "imports": [
