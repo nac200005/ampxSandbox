@@ -12,12 +12,12 @@ SCENE.add(new THREE.AmbientLight(0xffffff, 0.1));
 // Establish a new perspective camera and set it's position
 const CAMERA = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.1, 1000);
 CAMERA.position.z = 1.5;
-CAMERA.rotation.x = Math.PI/2;
+CAMERA.rotation.x = Math.PI / 2;
 
 // Bloom Renderer
 const RENDER_SCENE = new RenderPass(SCENE, CAMERA);
 const BLOOM_PASS = new UnrealBloomPass(
-    new THREE.Vector2(window.innerWidth, window.innerHeight), 
+    new THREE.Vector2(window.innerWidth, window.innerHeight),
     1.5, 0.4, 100
 );
 BLOOM_PASS.threshold = 0;
@@ -29,13 +29,13 @@ const STAR_GROUP = new THREE.Group();
 
 // Star count based on screen size
 const STAR_COUNT = Math.floor(
-    Math.sqrt((window.innerHeight**2) + (window.innerHeight**2))
+    Math.sqrt((window.innerHeight ** 2) + (window.innerHeight ** 2))
 );
 
 // The constant acceleration of the starts once
 // light speed is engaged
 const STAR_COUNT_LENGTH = STAR_COUNT.toString().length;
-const STAR_ACCELERATION = 
+const STAR_ACCELERATION =
     (STAR_COUNT / STAR_COUNT_LENGTH) / (10 ** STAR_COUNT_LENGTH);
 
 // Determine when to stop light speed based on
@@ -45,7 +45,7 @@ const COUNTER_MAX = (STAR_COUNT * STAR_COUNT) / 3;
 // Add the stars to the scene
 for (let i = 0; i < STAR_COUNT; i++) {
     const SPHERE = new THREE.Mesh(
-        new THREE.SphereGeometry(0.17), 
+        new THREE.SphereGeometry(0.17),
         new THREE.MeshBasicMaterial({
             color: new THREE.Color("#FFFFFF")
         })
@@ -71,14 +71,14 @@ export const EngageLightSpeed = () => LightSpeedEngaged = 1;
 // This is required for if the user resizes the site,
 // which is caught using the Window Resize Listener
 const resize = async () => {
-	// Set the pixel ratio
-	Renderer.setPixelRatio(window.devicePixelRatio);
-	// Set the screen size
-	Renderer.setSize(window.innerWidth, window.innerHeight);
-	// Set the camera aspect ratio (most likely 16:9)
-	CAMERA.aspect = window.innerWidth / window.innerHeight;
-	// Update projection matrix
-	CAMERA.updateProjectionMatrix();
+    // Set the pixel ratio
+    Renderer.setPixelRatio(window.devicePixelRatio);
+    // Set the screen size
+    Renderer.setSize(window.innerWidth, window.innerHeight);
+    // Set the camera aspect ratio (most likely 16:9)
+    CAMERA.aspect = window.innerWidth / window.innerHeight;
+    // Update projection matrix
+    CAMERA.updateProjectionMatrix();
 };
 // Window Resize Listener
 window.addEventListener('resize', resize);
@@ -98,7 +98,7 @@ const MoveForwardNeutral = () => {
 
         // Update the star position
         star.position.y -= star.velocity;
-        
+
         // Update the vertices y values if too far
         if (star.position.y < -200) star.position.y = 200;
     }
@@ -116,10 +116,10 @@ const MoveForward = () => {
         star.scale.y += 0.3;
 
         // Integrate Uniform Velocity
-        if (star.velocity < 7) 
+        if (star.velocity < 7)
             star.velocity += STAR_ACCELERATION;
         star.position.y -= star.velocity;
-    
+
         // Update the vertices y values if too far
         if (star.position.y < -200) star.position.y = 200;
     }
@@ -151,7 +151,7 @@ const animate = async () => {
 
     // Else, move the stars backwards (start)
     else MoveBackward();
-    
+
     // Bloom Composer and Scene Renderer
     BloomComposer.render();
     Renderer.render(SCENE, CAMERA);
@@ -160,9 +160,9 @@ const animate = async () => {
 // The setScene() function is the primary function
 // for updating the scene data.
 export const SetScene = async (canvas) => {
-	// Render the new scene
-	Renderer = new THREE.WebGLRenderer({ canvas: canvas });
-	Renderer.setSize(window.innerWidth, window.innerHeight);
+    // Render the new scene
+    Renderer = new THREE.WebGLRenderer({ canvas: canvas });
+    Renderer.setSize(window.innerWidth, window.innerHeight);
     Renderer.autoClear = false;
 
     // Bloom Composer
@@ -173,9 +173,9 @@ export const SetScene = async (canvas) => {
     BloomComposer.addPass(BLOOM_PASS);
     BloomComposer.render();
 
-	// Size the scene
-	await resize();
+    // Size the scene
+    await resize();
 
-	// Animate the sphere
-	await animate();
+    // Animate the sphere
+    await animate();
 };
