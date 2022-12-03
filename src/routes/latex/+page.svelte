@@ -62,11 +62,11 @@
         <h2 class="text-black text-4xl mt-10 font-black">{folder.name}</h2>
         {#each folder.docs as doc}
             <h2 class="text-black text-2xl my-10">{doc.name}</h2>
-            <div class="mb-6">
+            <div class="mb-6 flex flex-col lg:block text-center">
                 <a href={"https://docs.google.com/viewer?url=" + doc.pdf_url} rel="noopener noreferrer" target="_blank" class="bg-black px-10 py-4 text-white hover:bg-blue-800">
                     View PDF
                 </a>
-                <a href={doc.src_url} rel="noopener noreferrer" target="_blank" class="bg-black px-10 py-4 text-white shadow-lg hover:bg-blue-800">
+                <a href={doc.src_url} rel="noopener noreferrer" target="_blank" class="bg-black mt-4 px-10 py-4 text-white shadow-lg hover:bg-blue-800">
                     View Source Code
                 </a>
             </div>
