@@ -38,7 +38,7 @@
         await fetch("https://api.github.com/repos/Simpson-Computer-Technologies-Research/LaTeX/contents/")
             .then((r) => r.json()).then(async (json) => {
                 for (let i = 0; i < json.length; i++) {
-                    if (!["LICENSE", ".vscode", "README.md"].includes(json[i].name)) {
+                    if (!["LICENSE", ".vscode", "README.md", "Hidden", ".gitignore"].includes(json[i].name)) {
                         // Add the folder hash to the data map
                         data[json[i].sha] = { name: json[i].name, docs: [] };
 
