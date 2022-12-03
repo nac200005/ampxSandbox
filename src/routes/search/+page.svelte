@@ -1,6 +1,5 @@
 <script>
     // Import Components
-    import SimpsonGalaxyTitle from "../components/SimpsonGalaxyTitle.svelte";
     import { SetScene } from '$lib/LightSpeed.js';
 
     // Import Libraries

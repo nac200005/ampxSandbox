@@ -19,17 +19,7 @@
 	let LightSpeedScene;
 
 	// On site load
-	onMount(async () => {
-		// Check if user is trying to query repos
-		const LOCATION = window.location.href.split("?")[1];
-		if (LOCATION != undefined) {
-			return window.location.assign(
-				window.location.origin + "/search?query=" + LOCATION
-			);
-		}
-		// Else, set the galaxy background scene
-		await SetScene(LightSpeedScene)
-	});
+	onMount(async () => await SetScene(LightSpeedScene));
 
 	// Header Management Variables
 	let ShowPlanets, ShowSimpsonGalaxyHeader = false;
