@@ -86,7 +86,7 @@
 <!-- Align the content to the center -->
 <div class="flex flex-col items-center justify-center my-10 mx-10">
     <!-- Header -->
-    <h2 class="text-black text-6xl mt-10 font-black">Tristan Simpson</h2>
+    <h2 class="text-black text-6xl mt-10 font-black">Simpson Research</h2>
     <h2 class="text-black text-lg mt-6">
         All the PDFs were made with <a
             href="https://www.latex-project.org/"
