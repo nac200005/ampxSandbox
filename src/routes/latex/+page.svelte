@@ -92,11 +92,17 @@
             href="https://www.latex-project.org/"
             rel="noopener noreferrer"
             target="_blank"
-            class="hover:underline text-amber-400 font-bold">LaTeX</a
+            class="hover:underline text-amber-500 font-black tracking-wider">LaTeX</a
         >
     </h2>
     <h2 class="text-black text-lg mt-2 ">
-        If you want to learn how dm me on discord @tristan#2230
+        Check out <a 
+            rel="noopener noreferrer" 
+            target="_blank" 
+            href="https://github.com/realTristan/ratex" 
+            style="background: none;" 
+            class="text-amber-500 font-black hover:underline tracking-wider">RaTeX</a
+        > to build PDF's like this in Python!
     </h2>
 
     <!-- PDF Data -->
