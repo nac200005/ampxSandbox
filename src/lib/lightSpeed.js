@@ -159,9 +159,9 @@ const animate = async () => {
 // for updating the scene data.
 export const SetScene = async (canvas) => {
     // Render the new scene
-    Renderer = new THREE.WebGLRenderer({ canvas: canvas });
+    Renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: false });
     Renderer.setSize(window.innerWidth, window.innerHeight);
-    Renderer.setPixelRatio(window.devicePixelRatio);
+    Renderer.setPixelRatio(window.devicePixelRatio * 0.5);
     Renderer.autoClear = false;
 
     // Bloom Composer
