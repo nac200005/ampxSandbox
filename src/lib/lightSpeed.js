@@ -71,10 +71,12 @@ export const EngageLightSpeed = () => LightSpeedEngaged = 1;
 // This is required for if the user resizes the site,
 // which is caught using the Window Resize Listener
 const resize = async () => {
+    // Set the pixel ratio
+    Renderer.setPixelRatio(window.devicePixelRatio);
     // Set the screen size
-    Renderer.setSize(window.innerWidth, 900);
-    // Set the camera aspect ratio
-    CAMERA.aspect = window.innerWidth / 900;
+    Renderer.setSize(window.innerWidth, window.innerHeight);
+    // Set the camera aspect ratio (most likely 16:9)
+    CAMERA.aspect = window.innerWidth / window.innerHeight;
     // Update projection matrix
     CAMERA.updateProjectionMatrix();
 };
