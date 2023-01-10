@@ -22,8 +22,8 @@
 
         // Get github repo data
         const URLS = [
-            "https://api.github.com/users/Simpson-Computer-Technologies-Research/repos",
-            "https://api.github.com/users/realTristan/repos"
+            "https://api.github.com/users/Simpson-Computer-Technologies-Research/repos?per_page=100",
+            "https://api.github.com/users/realTristan/repos?per_page=100"
         ]
         URLS.forEach(async (url, _) => {
             await self.fetch(url)

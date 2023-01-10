@@ -10,7 +10,7 @@
         // Get 'Simpson Computer Technologies Research' Github Data
         await self
             .fetch(
-                "https://api.github.com/users/Simpson-Computer-Technologies-Research/repos"
+                "https://api.github.com/users/Simpson-Computer-Technologies-Research/repos?per_page=100"
             )
             .then((response) => response.json())
             .then((json) => {
