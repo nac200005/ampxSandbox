@@ -18,8 +18,7 @@
 	onMount(async () => await SetScene(LightSpeedScene));
 
 	// Header Management Variables
-	let ShowPlanets,
-		ShowSimpsonGalaxyHeader = false;
+	let showRepos, showSimpsonGalaxyHeader = false;
 </script>
 
 <svelte:head>
@@ -31,7 +30,7 @@
 </svelte:head>
 
 <!-- Main Header -->
-{#if !ShowPlanets}
+{#if !showRepos}
 	<!-- "TRISTAN SIMPSON" Title -->
 	<div
 		class="justify-center items-center flex mx-20"
@@ -51,8 +50,8 @@
 	>
 		<button
 			on:click={async () => {
-				setTimeout(async () => (ShowPlanets = true), 2500);
-				setTimeout(async () => (ShowSimpsonGalaxyHeader = true), 5300);
+				setTimeout(async () => (showRepos = true), 2500);
+				setTimeout(async () => (showSimpsonGalaxyHeader = true), 5300);
 				EngageLightSpeed();
 			}}
 			class="px-4 text-xl md:text-2xl w-42 h-12 backdrop-blur-sm text-white rounded-lg font-black tracking-widest hover:bg-white hover:tracking-[0.2em] hover:text-black duration-700 ease-in-out"
@@ -62,12 +61,12 @@
 	</div>
 {/if}
 
-{#if ShowPlanets}
+{#if showRepos}
 	<!-- "WELCOME TO" Title -->
-	{#if !ShowSimpsonGalaxyHeader} <WelcomeUser /> {/if}
+	{#if !showSimpsonGalaxyHeader} <WelcomeUser /> {/if}
 
 	<!-- "THE SIMPSON GALAXY" Title -->
-	{#if ShowSimpsonGalaxyHeader}
+	{#if showSimpsonGalaxyHeader}
 		<SimpsonGalaxyTitle />
 		<Projects />
 	{/if}
