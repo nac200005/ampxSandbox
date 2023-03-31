@@ -1,0 +1,31 @@
+import{S as Z,i as j,s as ee,k,r as E,a as L,M as te,l as v,m as w,u as T,h as i,c as R,p as c,q as re,G as f,b as C,n as G,L as Q,o as le,e as U,v as W}from"../../../chunks/index-b3cd2fd6.js";function Y(p,o,u){const b=p.slice();return b[3]=o[u][0],b[4]=o[u][1],b}function B(p,o,u){const b=p.slice();return b[7]=o[u],b}function J(p){let o,u=p[7].name+"",b,n,a,r,l,e,h,t,D,A,x;return{c(){o=k("h2"),b=E(u),n=L(),a=k("div"),r=k("a"),l=E("View PDF"),h=L(),t=k("a"),D=E("View Code"),x=L(),this.h()},l(d){o=v(d,"H2",{class:!0});var m=w(o);b=T(m,u),m.forEach(i),n=R(d),a=v(d,"DIV",{class:!0});var S=w(a);r=v(S,"A",{href:!0,rel:!0,target:!0,class:!0});var F=w(r);l=T(F,"View PDF"),F.forEach(i),h=R(S),t=v(S,"A",{href:!0,rel:!0,target:!0,class:!0});var V=w(t);D=T(V,"View Code"),V.forEach(i),x=R(S),S.forEach(i),this.h()},h(){c(o,"class","text-black text-2xl my-10"),c(r,"href",e="https://docs.google.com/viewer?url="+p[7].pdf_url),c(r,"rel","noopener noreferrer"),c(r,"target","_blank"),c(r,"class","bg-black px-10 py-4 text-white hover:bg-amber-400 hover:text-black"),c(t,"href",A=p[7].src_url),c(t,"rel","noopener noreferrer"),c(t,"target","_blank"),c(t,"class","bg-black mt-4 px-10 py-4 text-white shadow-lg hover:bg-amber-400 hover:text-black"),c(a,"class","mb-6 flex flex-col lg:block text-center")},m(d,m){C(d,o,m),f(o,b),C(d,n,m),C(d,a,m),f(a,r),f(r,l),f(a,h),f(a,t),f(t,D),f(a,x)},p(d,m){m&1&&u!==(u=d[7].name+"")&&W(b,u),m&1&&e!==(e="https://docs.google.com/viewer?url="+d[7].pdf_url)&&c(r,"href",e),m&1&&A!==(A=d[7].src_url)&&c(t,"href",A)},d(d){d&&i(o),d&&i(n),d&&i(a)}}}function K(p){let o,u=p[4].name+"",b,n,a,r=p[4].docs,l=[];for(let e=0;e<r.length;e+=1)l[e]=J(B(p,r,e));return{c(){o=k("h2"),b=E(u),n=L();for(let e=0;e<l.length;e+=1)l[e].c();a=U(),this.h()},l(e){o=v(e,"H2",{class:!0});var h=w(o);b=T(h,u),h.forEach(i),n=R(e);for(let t=0;t<l.length;t+=1)l[t].l(e);a=U(),this.h()},h(){c(o,"class","text-black text-4xl mt-10 font-black")},m(e,h){C(e,o,h),f(o,b),C(e,n,h);for(let t=0;t<l.length;t+=1)l[t].m(e,h);C(e,a,h)},p(e,h){if(h&1&&u!==(u=e[4].name+"")&&W(b,u),h&1){r=e[4].docs;let t;for(t=0;t<r.length;t+=1){const D=B(e,r,t);l[t]?l[t].p(D,h):(l[t]=J(D),l[t].c(),l[t].m(a.parentNode,a))}for(;t<l.length;t+=1)l[t].d(1);l.length=r.length}},d(e){e&&i(o),e&&i(n),Q(l,e),e&&i(a)}}}function ae(p){let o,u,b,n,a,r,l,e,h,t,D,A,x,d,m,S,F,V,I,X,H=Object.entries(p[0]),g=[];for(let s=0;s<H.length;s+=1)g[s]=K(Y(p,H,s));return{c(){o=k("style"),u=E(`body {\r
+            background: white;\r
+        }\r
+        :root::-webkit-scrollbar {\r
+            width: 1rem;\r
+        }\r
+        :root::-webkit-scrollbar-track {\r
+            background: lightgray;\r
+        }\r
+\r
+        :root::-webkit-scrollbar-thumb {\r
+            background: black;\r
+        }\r
+        :root::-webkit-scrollbar-thumb:hover {\r
+            background: #fbbf24;\r
+        }`),b=L(),n=k("div"),a=k("h2"),r=E("Simpson Research"),l=L(),e=k("h2"),h=E("All the PDFs were made with "),t=k("a"),D=E("LaTeX"),A=L(),x=k("h2"),d=E("Check out "),m=k("a"),S=E("RaTeX"),F=E(" to build PDF's like this in Python!"),V=L();for(let s=0;s<g.length;s+=1)g[s].c();I=L(),X=k("div"),this.h()},l(s){const P=te("svelte-1f7bczf",document.head);o=v(P,"STYLE",{});var _=w(o);u=T(_,`body {\r
+            background: white;\r
+        }\r
+        :root::-webkit-scrollbar {\r
+            width: 1rem;\r
+        }\r
+        :root::-webkit-scrollbar-track {\r
+            background: lightgray;\r
+        }\r
+\r
+        :root::-webkit-scrollbar-thumb {\r
+            background: black;\r
+        }\r
+        :root::-webkit-scrollbar-thumb:hover {\r
+            background: #fbbf24;\r
+        }`),_.forEach(i),P.forEach(i),b=R(s),n=v(s,"DIV",{class:!0});var y=w(n);a=v(y,"H2",{class:!0});var O=w(a);r=T(O,"Simpson Research"),O.forEach(i),l=R(y),e=v(y,"H2",{class:!0});var q=w(e);h=T(q,"All the PDFs were made with "),t=v(q,"A",{href:!0,rel:!0,target:!0,class:!0});var $=w(t);D=T($,"LaTeX"),$.forEach(i),q.forEach(i),A=R(y),x=v(y,"H2",{class:!0});var M=w(x);d=T(M,"Check out "),m=v(M,"A",{rel:!0,target:!0,href:!0,style:!0,class:!0});var z=w(m);S=T(z,"RaTeX"),z.forEach(i),F=T(M," to build PDF's like this in Python!"),M.forEach(i),V=R(y);for(let N=0;N<g.length;N+=1)g[N].l(y);y.forEach(i),I=R(s),X=v(s,"DIV",{class:!0}),w(X).forEach(i),this.h()},h(){c(a,"class","text-black text-6xl mt-10 font-black"),c(t,"href","https://www.latex-project.org/"),c(t,"rel","noopener noreferrer"),c(t,"target","_blank"),c(t,"class","hover:underline text-amber-500 font-black tracking-wider"),c(e,"class","text-black text-lg mt-6"),c(m,"rel","noopener noreferrer"),c(m,"target","_blank"),c(m,"href","https://github.com/realTristan/ratex"),re(m,"background","none"),c(m,"class","text-amber-500 font-black hover:underline tracking-wider"),c(x,"class","text-black text-lg mt-2 "),c(n,"class","flex flex-col items-center justify-center my-10 mx-10"),c(X,"class","my-12 w-10 h-1")},m(s,P){f(document.head,o),f(o,u),C(s,b,P),C(s,n,P),f(n,a),f(a,r),f(n,l),f(n,e),f(e,h),f(e,t),f(t,D),f(n,A),f(n,x),f(x,d),f(x,m),f(m,S),f(x,F),f(n,V);for(let _=0;_<g.length;_+=1)g[_].m(n,null);C(s,I,P),C(s,X,P)},p(s,[P]){if(P&1){H=Object.entries(s[0]);let _;for(_=0;_<H.length;_+=1){const y=Y(s,H,_);g[_]?g[_].p(y,P):(g[_]=K(y),g[_].c(),g[_].m(n,null))}for(;_<g.length;_+=1)g[_].d(1);g.length=H.length}},i:G,o:G,d(s){i(o),s&&i(b),s&&i(n),Q(g,s),s&&i(I),s&&i(X)}}}function oe(p,o,u){const b=r=>(r=r.replace("api.github.com/repos/Simpson-Computer-Technologies-Research/LaTeX/contents/","raw.githubusercontent.com/Simpson-Computer-Technologies-Research/LaTeX/main/"),r.split("?ref")[0]+"/build/main.pdf"),n=async(r,l)=>{await fetch(l).then(e=>e.json()).then(e=>{for(var h=0;h<e.length;h++)u(0,a[r].docs=[...a[r].docs,{name:e[h].name,pdf_url:b(e[h].url),src_url:e[h].html_url}],a)})};let a={};return le(async()=>{await fetch("https://api.github.com/repos/Simpson-Computer-Technologies-Research/LaTeX/contents/").then(r=>r.json()).then(async r=>{for(let l=0;l<r.length;l++)["LICENSE",".vscode","README.md","Hidden",".gitignore"].includes(r[l].name)||(u(0,a[r[l].sha]={name:r[l].name,docs:[]},a),await n(r[l].sha,r[l].url))})}),[a]}class ne extends Z{constructor(o){super(),j(this,o,oe,ae,ee,{})}}export{ne as default};
