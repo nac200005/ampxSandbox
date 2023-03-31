@@ -1,6 +1,6 @@
 {
   "node_modules/@sveltejs/kit/src/runtime/client/start.js": {
-    "file": "_app/immutable/start-add25605.js",
+    "file": "_app/immutable/start-aa6a099a.js",
     "src": "node_modules/@sveltejs/kit/src/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -26,7 +26,7 @@
       "_index-b3cd2fd6.js"
     ],
     "css": [
-      "_app/immutable/assets/app-c496eac0.css"
+      "_app/immutable/assets/app-1246b60f.css"
     ]
   },
   "src/routes/+error.svelte": {
@@ -45,20 +45,20 @@
       "_index-b3cd2fd6.js"
     ],
     "css": [
-      "_app/immutable/assets/app-c496eac0.css"
+      "_app/immutable/assets/app-1246b60f.css"
     ]
   },
   "src/routes/+page.svelte": {
-    "file": "_app/immutable/components/pages/_page.svelte-339662b6.js",
+    "file": "_app/immutable/components/pages/_page.svelte-63d7ec7d.js",
     "src": "src/routes/+page.svelte",
     "isEntry": true,
     "imports": [
       "_index-b3cd2fd6.js",
-      "_index-475d94bf.js"
+      "_index-d360189a.js"
     ]
   },
   "src/routes/apc/+page.svelte": {
-    "file": "_app/immutable/components/pages/apc/_page.svelte-bb7b6b89.js",
+    "file": "_app/immutable/components/pages/apc/_page.svelte-c5b21cdb.js",
     "src": "src/routes/apc/+page.svelte",
     "isEntry": true,
     "imports": [
@@ -82,16 +82,16 @@
     ]
   },
   "src/routes/search/+page.svelte": {
-    "file": "_app/immutable/components/pages/search/_page.svelte-bfe9b31b.js",
+    "file": "_app/immutable/components/pages/search/_page.svelte-ba519616.js",
     "src": "src/routes/search/+page.svelte",
     "isEntry": true,
     "imports": [
       "_index-b3cd2fd6.js",
-      "_index-475d94bf.js"
+      "_index-d360189a.js"
     ]
   },
   "src/routes/stem/+page.svelte": {
-    "file": "_app/immutable/components/pages/stem/_page.svelte-afe9c71b.js",
+    "file": "_app/immutable/components/pages/stem/_page.svelte-c60ab8ea.js",
     "src": "src/routes/stem/+page.svelte",
     "isEntry": true,
     "imports": [
@@ -107,11 +107,11 @@
     ]
   },
   "src/routes/apc/+page.js": {
-    "file": "_app/immutable/modules/pages/apc/_page.js-1ae348f6.js",
+    "file": "_app/immutable/modules/pages/apc/_page.js-4333c1b9.js",
     "src": "src/routes/apc/+page.js",
     "isEntry": true,
     "imports": [
-      "__page-359cd9aa.js"
+      "__page-8a8f68b1.js"
     ]
   },
   "src/routes/github/+page.js": {
@@ -123,11 +123,11 @@
     ]
   },
   "src/routes/latex/+page.js": {
-    "file": "_app/immutable/modules/pages/latex/_page.js-877d82ca.js",
+    "file": "_app/immutable/modules/pages/latex/_page.js-0b007541.js",
     "src": "src/routes/latex/+page.js",
     "isEntry": true,
     "imports": [
-      "__page-097e8939.js"
+      "__page-73ff7cd0.js"
     ]
   },
   "src/routes/search/+page.js": {
@@ -139,18 +139,18 @@
     ]
   },
   "src/routes/stem/+page.js": {
-    "file": "_app/immutable/modules/pages/stem/_page.js-0c68d201.js",
+    "file": "_app/immutable/modules/pages/stem/_page.js-b83f9d09.js",
     "src": "src/routes/stem/+page.js",
     "isEntry": true,
     "imports": [
-      "__page-cba4190f.js"
+      "__page-ffe1867c.js"
     ]
   },
   "_index-b3cd2fd6.js": {
     "file": "_app/immutable/chunks/index-b3cd2fd6.js"
   },
-  "_index-475d94bf.js": {
-    "file": "_app/immutable/chunks/index-475d94bf.js",
+  "_index-d360189a.js": {
+    "file": "_app/immutable/chunks/index-d360189a.js",
     "imports": [
       "_index-b3cd2fd6.js"
     ]
@@ -158,20 +158,20 @@
   "__page-bac68b31.js": {
     "file": "_app/immutable/chunks/_page-bac68b31.js"
   },
-  "__page-359cd9aa.js": {
-    "file": "_app/immutable/chunks/_page-359cd9aa.js"
+  "__page-8a8f68b1.js": {
+    "file": "_app/immutable/chunks/_page-8a8f68b1.js"
   },
   "__page-ec625255.js": {
     "file": "_app/immutable/chunks/_page-ec625255.js"
   },
-  "__page-097e8939.js": {
-    "file": "_app/immutable/chunks/_page-097e8939.js"
+  "__page-73ff7cd0.js": {
+    "file": "_app/immutable/chunks/_page-73ff7cd0.js"
   },
   "__page-2d106bb9.js": {
     "file": "_app/immutable/chunks/_page-2d106bb9.js"
   },
-  "__page-cba4190f.js": {
-    "file": "_app/immutable/chunks/_page-cba4190f.js"
+  "__page-ffe1867c.js": {
+    "file": "_app/immutable/chunks/_page-ffe1867c.js"
   },
   ".svelte-kit/generated/nodes/0.js": {
     "file": "_app/immutable/chunks/0-27999181.js",
@@ -198,7 +198,7 @@
     ]
   },
   ".svelte-kit/generated/nodes/3.js": {
-    "file": "_app/immutable/chunks/3-b94ea236.js",
+    "file": "_app/immutable/chunks/3-56e65ee3.js",
     "src": ".svelte-kit/generated/nodes/3.js",
     "isDynamicEntry": true,
     "imports": [
@@ -207,11 +207,11 @@
     ]
   },
   ".svelte-kit/generated/nodes/4.js": {
-    "file": "_app/immutable/chunks/4-9ee9575f.js",
+    "file": "_app/immutable/chunks/4-1d427da3.js",
     "src": ".svelte-kit/generated/nodes/4.js",
     "isDynamicEntry": true,
     "imports": [
-      "__page-359cd9aa.js",
+      "__page-8a8f68b1.js",
       "src/routes/apc/+page.svelte"
     ]
   },
@@ -225,16 +225,16 @@
     ]
   },
   ".svelte-kit/generated/nodes/6.js": {
-    "file": "_app/immutable/chunks/6-fb692294.js",
+    "file": "_app/immutable/chunks/6-340790fb.js",
     "src": ".svelte-kit/generated/nodes/6.js",
     "isDynamicEntry": true,
     "imports": [
-      "__page-097e8939.js",
+      "__page-73ff7cd0.js",
       "src/routes/latex/+page.svelte"
     ]
   },
   ".svelte-kit/generated/nodes/7.js": {
-    "file": "_app/immutable/chunks/7-0a2f46a5.js",
+    "file": "_app/immutable/chunks/7-56fbf1f4.js",
     "src": ".svelte-kit/generated/nodes/7.js",
     "isDynamicEntry": true,
     "imports": [
@@ -243,16 +243,16 @@
     ]
   },
   ".svelte-kit/generated/nodes/8.js": {
-    "file": "_app/immutable/chunks/8-44a0cc53.js",
+    "file": "_app/immutable/chunks/8-c8da018a.js",
     "src": ".svelte-kit/generated/nodes/8.js",
     "isDynamicEntry": true,
     "imports": [
-      "__page-cba4190f.js",
+      "__page-ffe1867c.js",
       "src/routes/stem/+page.svelte"
     ]
   },
   "app.css": {
-    "file": "_app/immutable/assets/app-c496eac0.css",
+    "file": "_app/immutable/assets/app-1246b60f.css",
     "src": "app.css"
   }
 }
