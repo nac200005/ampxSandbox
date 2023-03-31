@@ -1,0 +1,1 @@
+import{S as s,i as t,s as n,o as i}from"../../../chunks/index-b3cd2fd6.js";function r(o){return i(()=>{window.location.href="https://github.com/orgs/Simpson-Computer-Technologies-Research/repositories"}),[]}class u extends s{constructor(e){super(),t(this,e,r,null,n,{})}}export{u as default};
