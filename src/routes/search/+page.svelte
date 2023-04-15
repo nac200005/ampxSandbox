@@ -1,19 +1,16 @@
-<script>
-    // Import Components
-    import { SetScene } from '$lib/LightSpeed.js';
-
-    // Import Libraries
+<script lang="ts">
+    import { SetScene } from '$lib/lightSpeed';
     import { fade } from "svelte/transition";
     import { onMount } from "svelte";
 
     // Get the search word
-    const SEARCH_WORD = new URLSearchParams(window.location.search).get("query");
+    const SEARCH_WORD: string | null = new URLSearchParams(window.location.search).get("query");
 
     // Galaxy Background
-	let LightSpeedScene;
+	let LightSpeedScene: any;
 
     // Github Repo Data
-    let Repos = [];
+    let Repos: any[] = [];
 
     // On Page Mount
     onMount(async () => {
@@ -30,9 +27,15 @@
                 .then(response => response.json())
                 .then(json => {
                     // Iterate over the json response array
-                    new Map(Object.entries(json)).forEach((map, _) => {
-                        // Check if the repo title contains the search keyword.
-                        //      If it does, append the repo to the result
+                    new Map(Object.entries(json)).forEach((map: any, _) => {
+                        // If the user didn't search for anything, append the repo to the result
+                        if (SEARCH_WORD == null) {
+                            Repos = [...Repos, map];
+                            return;
+                        }
+
+                        // Check if the repo title contains the search keyword. 
+                        // If it does, append the repo to the result
                         if (map.name.toLowerCase().includes(SEARCH_WORD.toLowerCase()))
                             Repos = [...Repos, map];
                     });
@@ -47,7 +50,7 @@
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <div class="mt-24 mb-10 font-black text-white tracking-widest text-6xl cursor-pointer hover:tracking-[0.25em] duration-500 ease-in-out" on:click={() => window.location.reload()}>
         THE 
-        <mark style="background: none; color: #FF0055;">{SEARCH_WORD.toUpperCase()}</mark>
+        <mark style="background: none; color: #FF0055;">{SEARCH_WORD != null ? SEARCH_WORD.toUpperCase(): "SIMPSON"}</mark>
         GALAXY
     </div>
 </div>

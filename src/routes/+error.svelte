@@ -1,8 +1,8 @@
-<script>
+<script lang="ts">
     import { onMount } from "svelte";
     onMount(() => {
         // Get the invalid route if it exists
-        const LOCATION = window.location.href.split("/")[3];
+        const LOCATION: string = window.location.href.split("/")[3];
 
         // If an invalid route is present
         if (LOCATION != undefined)

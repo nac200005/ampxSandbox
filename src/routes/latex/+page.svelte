@@ -1,9 +1,12 @@
-<script>
+<script lang="ts">
     import { onMount } from "svelte";
+
+    // Map for storing repo data
+    let data: any = {};
 
     // Clean up the api url and return a functional
     // raw github data url.
-    const fixPdfUrl = (url) => {
+    const fixPdfUrl = (url: string) => {
         url = url.replace(
             "api.github.com/repos/Simpson-Computer-Technologies-Research/LaTeX/contents/",
             "raw.githubusercontent.com/Simpson-Computer-Technologies-Research/LaTeX/main/"
@@ -13,10 +16,10 @@
 
     // Fetch the files within provided folder. Add each
     // of the files urls to the data map.
-    const fetchFolderData = async (folderHash, url) => {
+    const fetchFolderData = async (folderHash: string, url: string) => {
         await fetch(url)
-            .then((r) => r.json())
-            .then((json) => {
+            .then((r: Response) => r.json())
+            .then((json: any) => {
                 for (var i = 0; i < json.length; i++) {
                     data[folderHash].docs = [
                         ...data[folderHash].docs,
@@ -29,9 +32,6 @@
                 }
             });
     };
-
-    // Map for storing repo data
-    let data = {};
 
     // Add all of the repository data from the LaTeX
     // repository on github to a data map
@@ -106,7 +106,8 @@
     </h2>
 
     <!-- PDF Data -->
-    {#each Object.entries(data) as [_, folder]}
+    {#each Object.keys(data) as folderHash}
+        {@const folder = data[folderHash]}
         <h2 class="text-black text-4xl mt-10 font-black">{folder.name}</h2>
         {#each folder.docs as doc}
             <h2 class="text-black text-2xl my-10">{doc.name}</h2>

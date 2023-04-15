@@ -1,9 +1,8 @@
-<script>
-    import { fade } from "svelte/transition";
+<script lang="ts">
     import { onMount } from "svelte";
 
     // Github Repo Data
-    let Repos = [];
+    let Repos: any[] = [];
 
     // On Page Mount
     onMount(async () => {
@@ -12,8 +11,8 @@
             .fetch(
                 "https://api.github.com/users/Simpson-Computer-Technologies-Research/repos?per_page=100"
             )
-            .then((response) => response.json())
-            .then((json) => {
+            .then((response: Response) => response.json())
+            .then((json: any) => {
                 for (let i = 0; i < json.length; i++) {
                     if (json[i].name.toLowerCase().includes("apc")) {
                         json[i].name = json[i].name.replace("APC", "Advanced Programming Week ");
@@ -21,7 +20,9 @@
                     }
                 }
             })
-            .catch((error) => console.log(error));
+            .catch((error: any) => {
+                console.log(error);
+            });
     });
 </script>
 

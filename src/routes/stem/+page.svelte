@@ -1,9 +1,8 @@
-<script>
-    import { fade } from "svelte/transition";
+<script lang="ts">
     import { onMount } from "svelte";
 
     // Github Repo Data
-    let Repos = [];
+    let Repos: any[] = [];
 
     // On Page Mount
     onMount(async () => {

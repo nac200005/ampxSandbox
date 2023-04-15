@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
 	// Import Three.js Scene Functions
-	import { EngageLightSpeed, SetScene } from "$lib/LightSpeed.js";
+	import { EngageLightSpeed, SetScene } from "$lib/lightSpeed";
 
 	// Import Svelte Libraries
 	import { fade } from "svelte/transition";
@@ -12,13 +12,13 @@
 	import Projects from "./components/Projects.svelte";
 
 	// Galaxy Background
-	let LightSpeedScene;
+	let LightSpeedScene: any;
 
 	// On site load
 	onMount(async () => await SetScene(LightSpeedScene));
 
 	// Header Management Variables
-	let showRepos, showSimpsonGalaxyHeader = false;
+	let showRepos: boolean, showSimpsonGalaxyHeader: boolean = false;
 </script>
 
 <svelte:head>
