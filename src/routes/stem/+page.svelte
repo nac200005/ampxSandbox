@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
 
   // Github Repo Data
-  let Repos: any[] = [];
+  let repos: any[] = [];
 
   // On Page Mount
   onMount(async () => {
@@ -19,7 +19,7 @@
               "STEM_CLUB_Week",
               "Stem Club Week "
             );
-            Repos = [...Repos, json[i]];
+            repos = [...repos, json[i]];
           }
         }
       })
@@ -30,7 +30,7 @@
 <svelte:head>
   <style>
     body { background: white; }
-    :root::-webkit-scrollbar { width: 1rem; }
+    :root::-webkit-scrollbar { width: 1rem;  }
     :root::-webkit-scrollbar-track { background: lightgray; }
     :root::-webkit-scrollbar-thumb { background: black; }
     :root::-webkit-scrollbar-thumb:hover { background: #fbbf24; }
@@ -57,7 +57,7 @@
 
   <!-- PDF Data -->
   <h2 class="text-black text-4xl mt-10 font-black">Stem Club</h2>
-  {#each Repos as file}
+  {#each repos as file}
     <h2 class="text-black text-2xl my-10">{file.name}</h2>
     <div class="mb-6 text-center">
       <a

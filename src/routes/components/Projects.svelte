@@ -3,7 +3,7 @@
   import { onMount } from "svelte";
 
   // Github Repo Data
-  let Repos: any[] = [];
+  let repos: any[] = [];
 
   // On Page Mount
   onMount(async () => {
@@ -12,15 +12,15 @@
       .fetch(
         "https://api.github.com/users/Simpson-Computer-Technologies-Research/repos"
       )
-      .then((response: Response) => response.json())
-      .then((json: any) => (Repos = [...Repos, ...json]))
+      .then((response) => response.json())
+      .then((json) => (repos = [...repos, ...json]))
       .catch((error) => console.log(error));
 
     // Get 'realTristan' Github Data
     await self
       .fetch("https://api.github.com/users/realTristan/repos")
-      .then((response: Response) => response.json())
-      .then((json: any) => (Repos = [...Repos, ...json]))
+      .then((response) => response.json())
+      .then((json) => (repos = [...repos, ...json]))
       .catch((error) => console.log(error));
   });
 </script>
@@ -28,7 +28,7 @@
 <!-- Github Repositories -->
 <div class="flex justify-center items-center">
   <div>
-    {#each Repos as data, i}
+    {#each repos as data, i}
       <div
         class="group my-20 translate-y-0 hover:-translate-y-8 duration-[400ms] ease-in-out lg:mr-10 mx-28 lg:mx-0 w-[20rem] md:w-[40rem] 2xl:w-[50rem]"
         in:fade={{ delay: 1200 + 250 * i, duration: 1000 }}
@@ -48,13 +48,9 @@
           </h2>
           <div class="flex justify-center items-center mt-6">
             {#each data.topics as topic}
-              <div class="">
-                <h2
-                  class="text-[0.60rem] text-gray-50 tracking-widest mx-4 uppercase"
-                >
-                  {topic}
-                </h2>
-              </div>
+            <h2 class="text-[0.60rem] text-gray-50 tracking-widest mx-4 uppercase">
+                {topic}
+            </h2>
             {/each}
           </div>
         </a>

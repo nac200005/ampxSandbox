@@ -1,9 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  // Map for storing repo data
-  let data: any = {};
-
   // Clean up the api url and return a functional
   // raw github data url.
   const fixPdfUrl = (url: string) => {
@@ -14,12 +11,15 @@
     return url.split("?ref")[0] + "/build/main.pdf";
   };
 
+  // Map for storing repo data
+  let data: any = {};
+
   // Fetch the files within provided folder. Add each
   // of the files urls to the data map.
   const fetchFolderData = async (folderHash: string, url: string) => {
     await fetch(url)
-      .then((r: Response) => r.json())
-      .then((json: any) => {
+      .then((r) => r.json())
+      .then((json) => {
         for (var i = 0; i < json.length; i++) {
           data[folderHash].docs = [
             ...data[folderHash].docs,
@@ -64,22 +64,11 @@
 
 <svelte:head>
   <style>
-    body {
-      background: white;
-    }
-    :root::-webkit-scrollbar {
-      width: 1rem;
-    }
-    :root::-webkit-scrollbar-track {
-      background: lightgray;
-    }
-
-    :root::-webkit-scrollbar-thumb {
-      background: black;
-    }
-    :root::-webkit-scrollbar-thumb:hover {
-      background: #fbbf24;
-    }
+    body { background: white; }
+    :root::-webkit-scrollbar { width: 1rem; }
+    :root::-webkit-scrollbar-track { background: lightgray; }
+    :root::-webkit-scrollbar-thumb { background: black; }
+    :root::-webkit-scrollbar-thumb:hover { background: #fbbf24; }
   </style>
 </svelte:head>
 

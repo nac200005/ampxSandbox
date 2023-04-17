@@ -3,7 +3,7 @@ import preprocess from "svelte-preprocess";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	preprocess: preprocess({postcss: true}),
+	preprocess: preprocess({ postcss: true }),
 	kit: {
 		adapter: adapter({
 			pages: 'build',
@@ -11,9 +11,8 @@ const config = {
 			fallback: null
 		}),
 		prerender: {
-			crawl: true,
-			entries: ["*", "/", "/search"],
-		  }
+			entries: ["*"],
+		}
 	}
 };
 

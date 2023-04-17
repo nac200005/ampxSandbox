@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
 
   // Github Repo Data
-  let Repos: any[] = [];
+  let repos: any[] = [];
 
   // On Page Mount
   onMount(async () => {
@@ -11,42 +11,29 @@
       .fetch(
         "https://api.github.com/users/Simpson-Computer-Technologies-Research/repos?per_page=100"
       )
-      .then((response: Response) => response.json())
-      .then((json: any) => {
+      .then((response) => response.json())
+      .then((json) => {
         for (let i = 0; i < json.length; i++) {
           if (json[i].name.toLowerCase().includes("apc")) {
             json[i].name = json[i].name.replace(
               "APC",
               "Advanced Programming Week "
             );
-            Repos = [...Repos, json[i]];
+            repos = [...repos, json[i]];
           }
         }
       })
-      .catch((error: any) => {
-        console.log(error);
-      });
+      .catch((error) => console.log(error));
   });
 </script>
 
 <svelte:head>
   <style>
-    body {
-      background: white;
-    }
-    :root::-webkit-scrollbar {
-      width: 1rem;
-    }
-    :root::-webkit-scrollbar-track {
-      background: lightgray;
-    }
-
-    :root::-webkit-scrollbar-thumb {
-      background: black;
-    }
-    :root::-webkit-scrollbar-thumb:hover {
-      background: #fbbf24;
-    }
+    body { background: white; }
+    :root::-webkit-scrollbar { width: 1rem; }
+    :root::-webkit-scrollbar-track { background: lightgray; }
+    :root::-webkit-scrollbar-thumb { background: black; }
+    :root::-webkit-scrollbar-thumb:hover { background: #fbbf24; }
   </style>
 </svelte:head>
 
@@ -72,7 +59,7 @@
   <h2 class="text-black text-4xl mt-10 font-black">
     Advanced Programming Club
   </h2>
-  {#each Repos as file}
+  {#each repos as file}
     <h2 class="text-black text-2xl my-10">{file.name}</h2>
     <div class="mb-6 text-center">
       <a
