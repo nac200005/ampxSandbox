@@ -1,35 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="./favicon.png" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Simpson Research</title>
-    <meta name="description" content="Simpson Research" />
-    <meta http-equiv="content-security-policy" content="">
-		<link rel="modulepreload" href="./_app/immutable/entry/start.4fd6415d.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index.7d9c5eda.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.1f2be1c8.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.5a60b19c.js">
-  </head>
-  <div style="overflow-x: hidden">
-    
-			<script>
-				{
-					__sveltekit_z0npg1 = {
-						env: {},
-						base: new URL(".", location).pathname.slice(0, -1),
-						element: document.currentScript.parentElement
-					};
-
-					Promise.all([
-						import("./_app/immutable/entry/start.4fd6415d.js"),
-						import("./_app/immutable/entry/app.5a60b19c.js")
-					]).then(([kit, app]) => {
-						kit.start(app, __sveltekit_z0npg1.element);
-					});
-				}
-			</script>
+	<head>
+		<meta charset="utf-8"/>
+		<link rel="icon" href="./favicon.png"/>
+		<meta name="viewport" content="width=device-width"/>
+		<title>Simpson Research</title>
+		<meta name="description" content="Simpson Research"/>
+		<meta http-equiv="content-security-policy" content="">
+		<link rel="modulepreload" href="./_app/immutable/start-f3deb5ae.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index-8c56bedf.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons-c52ba9e4.js">
+	</head>
+	<body style="overflow-x: hidden;">
 		
-  </div>
+		<script type="module" data-sveltekit-hydrate="45h">
+			import { start } from "./_app/immutable/start-f3deb5ae.js";
+
+			start({
+				env: {},
+				hydrate: null,
+				paths: {"base":"","assets":""},
+				target: document.querySelector('[data-sveltekit-hydrate="45h"]').parentNode,
+				trailing_slash: "never"
+			});
+		</script>
+	</body>
 </html>
