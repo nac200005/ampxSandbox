@@ -9,7 +9,6 @@
 	// Import Components
 	import WelcomeUser from "./components/WelcomeUser.svelte";
 	import SimpsonGalaxyTitle from "./components/SimpsonGalaxyTitle.svelte";
-	import Projects from "./components/Projects.svelte";
 
 	// Galaxy Background
 	let lightSpeedScene: any;
@@ -35,9 +34,9 @@
 		out:fade={{ duration: 600 }}
 	>
 		<div class="mt-72 font-black text-white tracking-widest text-6xl">
-			SIMPSON
+			AmpX
 			<mark style="background: none; color: #FF0055">+</mark>
-			RESEARCH
+			CONSULTING
 		</div>
 	</div>
 
@@ -51,20 +50,9 @@
 			}}
 			class="px-4 text-xl md:text-2xl w-42 h-12 backdrop-blur-sm text-white rounded-lg font-black tracking-widest hover:bg-white hover:tracking-[0.2em] hover:text-black duration-700 ease-in-out"
 		>
-			ENGAGE LIGHT SPEED
+			Click to Learn More
 		</button>
 	</div>
-{/if}
-
-{#if showRepos}
-	<!-- "WELCOME TO" Title -->
-	{#if !showSimpsonGalaxyHeader} <WelcomeUser /> {/if}
-
-	<!-- "THE SIMPSON GALAXY" Title -->
-	{#if showSimpsonGalaxyHeader}
-		<SimpsonGalaxyTitle />
-		<Projects />
-	{/if}
 {/if}
 
 <!-- Galaxy Background Canvas-->
