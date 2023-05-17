@@ -7,7 +7,6 @@
 	import { onMount } from "svelte";
 
 	// Import Components
-	import WelcomeUser from "./components/WelcomeUser.svelte";
 	import SimpsonGalaxyTitle from "./components/SimpsonGalaxyTitle.svelte";
 
 	// Galaxy Background
