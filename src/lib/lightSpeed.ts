@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+//import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 
 // Establish a new scene
 const SCENE = new THREE.Scene();
@@ -13,7 +13,7 @@ CAMERA.position.z = 1.5;
 CAMERA.rotation.x = Math.PI / 2;
 
 // Bloom Renderer
-const RENDER_SCENE = new RenderPass(SCENE, CAMERA);
+//const RENDER_SCENE = new RenderPass(SCENE, CAMERA);
 
 // Add the Stars to the Scene
 const STAR_GROUP = new THREE.Group();
@@ -23,8 +23,10 @@ const STAR_GROUP = new THREE.Group();
 const STAR_COUNT = Math.floor(
     Math.sqrt((window.innerHeight ** 2) + (window.innerHeight ** 2))
 );
-const amplitudes = [];
-const frequencies = [];
+const amplitudes: number[] = [];
+const frequencies: number[] = [];
+
+
 
 // The constant acceleration of the starts once
 // light speed is engaged
@@ -36,21 +38,30 @@ const STAR_ACCELERATION =
 // the users screen width
 const COUNTER_MAX = (STAR_COUNT * STAR_COUNT) / 3;
 
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
 // Add the stars to the scene
 for (let i = 0; i < STAR_COUNT; i++) {
-    amplitudes[i] = Math.random()* 0.3;
+    amplitudes[i] = Math.random()* 0.1;
     frequencies[i] = Math.abs(Math.random()* 0.3);
     const SPHERE = new THREE.Mesh(
         new THREE.SphereGeometry(0.5),//0.17
         new THREE.MeshBasicMaterial({
-            color: new THREE.Color("blue")
+            color: new THREE.Color(getRandomColor())
         })
     );
     SPHERE.sinVal = Math.random() * 100
     SPHERE.velocity = 0;
     SPHERE.position.set(
         Math.random() * 600 - 300,
-        50,
+        Math.random() * 50 + 30,
         //Math.random() * 600 - 300,
         Math.random() * 600 - 300
     );
@@ -58,8 +69,26 @@ for (let i = 0; i < STAR_COUNT; i++) {
 }
 SCENE.add(STAR_GROUP);
 
+function getPlanes() {
+    // Array to store the line objects
+    const planes: number[] = [];
+    for (let i = 0; i < STAR_COUNT; i++) {
+        let current = STAR_GROUP[i].position
+        let connectingNodes = []
+        for (let j = 0; j < STAR_COUNT; j++) {
+            let distance = STAR_GROUP[j].position
+        }
+
+    }
+    SCENE.add(planes)
+}
+
+
+// Function to generate random pairs of spheres
+
+
 // Renderer and Star Geometry Variables
-let Renderer
+let Renderer: THREE.renderer
 
 // Engage Light Speed Button
 let LightSpeedEngaged = 0;
@@ -90,15 +119,15 @@ const MoveForwardNeutral = () => {
     for (let i = 0; i < STAR_GROUP.children.length; i++) {
         let star = STAR_GROUP.children[i];
 
-        // Slow down the velocity and correct the star scale
-        //if (star.scale.x > 1) star.scale.x -= 0.5;
-        //if (star.velocity > 0.2) star.velocity -= 0.05;
+        //Slow down the velocity and correct the star scale
+        if (star.scale.x > 1) star.scale.x -= 0.5;
+        if (star.velocity > 0.2) star.velocity -= 0.05;
 
-        // Update the star position
-        //star.position.z += 1;
+       // Update the star position
+        star.position.z += 1;
 
-        // Update the vertices y values if too far
-        //if (star.position.x < -200) star.position.x = 1000;
+       // Update the vertices y values if too far
+        if (star.position.x < -200) star.position.x = 1000;
     }
 }
 
@@ -122,22 +151,26 @@ const MoveForward = () => {
         if (star.position.x < -200) star.position.x = 200;
     }
 }
-
+let scrollMotionControl = 0;
+window.addEventListener('scroll', () => {
+    scrollMotionControl = 1 - window.scrollY / window.innerHeight; // Update motion control value based on scroll position
+    console.log('scrollMotionControl:', scrollMotionControl);
+});
 // Move Stars Backwards
 const MoveBackward = () => {
     for (let i = 0; i < STAR_GROUP.children.length; i++) {
+        // Calculate the normalized cursor position
         let star = STAR_GROUP.children[i];
+
         // Integrate Uniform Velocity
-        star.position.x += 0.05;
+        star.position.x += 0.04;
+        star.position.y += scrollMotionControl * 10;
+        scrollMotionControl = 0;
         // Update the vertices y values if too far
-        if (star.position.x > 200) star.position.x = -200;
+        if (star.position.x > window.innerWidth) star.position.x = -10;
     }
 }
 
-// The animate() function is used to manipulate the
-// objects within the scene
-// The animate() function is used to manipulate the
-// objects within the scene
 // The animate() function is used to manipulate the
 // objects within the scene
 const animate = async () => {
@@ -162,14 +195,14 @@ const animate = async () => {
 
     for (let i = 0; i < STAR_GROUP.children.length; i++) {
         const sphere = STAR_GROUP.children[i];
-        const amplitude = Math.random() * 10 + 5; // Random amplitude for each sphere
-        const frequency = Math.random() * 4 + 1; // Random frequency for each sphere
+        const amplitude: number = Math.random() * 10 + 5; // Random amplitude for each sphere
+        const frequency: number = Math.random() * 4 + 1; // Random frequency for each sphere
 
         const zOffset = Math.sin(time * frequencies[i]) * amplitudes[i];
         sphere.position.z += zOffset;
     }
 
-    // Bloom Composer and Scene Renderer
+    // Scene Renderer
     Renderer.render(SCENE, CAMERA);
 };
 
@@ -177,7 +210,7 @@ const animate = async () => {
 
 // The setScene() function is the primary function
 // for updating the scene data.
-export const SetScene = async (canvas) => {
+export const SetScene = async (canvas: THREE.canvas) => {
     // Render the new scene
     Renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: false });
     Renderer.setSize(window.innerWidth, window.innerHeight);

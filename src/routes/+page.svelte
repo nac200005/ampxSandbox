@@ -21,7 +21,7 @@
 
 <svelte:head>
 	<style>
-		body { background: black; }
+		canvas { background: linear-gradient(blue, black); }
 	</style>
 </svelte:head>
 
