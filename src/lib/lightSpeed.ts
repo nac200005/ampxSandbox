@@ -1,6 +1,4 @@
 import * as THREE from 'three';
-import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
-import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 
 // Establish a new scene
@@ -16,21 +14,17 @@ CAMERA.rotation.x = Math.PI / 2;
 
 // Bloom Renderer
 const RENDER_SCENE = new RenderPass(SCENE, CAMERA);
-const BLOOM_PASS = new UnrealBloomPass(
-    new THREE.Vector2(window.innerWidth, window.innerHeight),
-    1.5, 0.4, 100
-);
-BLOOM_PASS.threshold = 0;
-BLOOM_PASS.strength = 0.5;
-BLOOM_PASS.radius = 0.1;
 
 // Add the Stars to the Scene
 const STAR_GROUP = new THREE.Group();
+
 
 // Star count based on screen size
 const STAR_COUNT = Math.floor(
     Math.sqrt((window.innerHeight ** 2) + (window.innerHeight ** 2))
 );
+const amplitudes = [];
+const frequencies = [];
 
 // The constant acceleration of the starts once
 // light speed is engaged
@@ -44,16 +38,20 @@ const COUNTER_MAX = (STAR_COUNT * STAR_COUNT) / 3;
 
 // Add the stars to the scene
 for (let i = 0; i < STAR_COUNT; i++) {
+    amplitudes[i] = Math.random()* 0.3;
+    frequencies[i] = Math.abs(Math.random()* 0.3);
     const SPHERE = new THREE.Mesh(
-        new THREE.SphereGeometry(0.17),
+        new THREE.SphereGeometry(0.5),//0.17
         new THREE.MeshBasicMaterial({
-            color: new THREE.Color("#FFFFFF")
+            color: new THREE.Color("blue")
         })
     );
+    SPHERE.sinVal = Math.random() * 100
     SPHERE.velocity = 0;
     SPHERE.position.set(
         Math.random() * 600 - 300,
-        Math.random() * 600 - 300,
+        50,
+        //Math.random() * 600 - 300,
         Math.random() * 600 - 300
     );
     STAR_GROUP.add(SPHERE);
@@ -61,7 +59,7 @@ for (let i = 0; i < STAR_COUNT; i++) {
 SCENE.add(STAR_GROUP);
 
 // Renderer and Star Geometry Variables
-let Renderer, BloomComposer;
+let Renderer
 
 // Engage Light Speed Button
 let LightSpeedEngaged = 0;
@@ -93,14 +91,14 @@ const MoveForwardNeutral = () => {
         let star = STAR_GROUP.children[i];
 
         // Slow down the velocity and correct the star scale
-        if (star.scale.y > 1) star.scale.y -= 0.5;
-        if (star.velocity > 0.2) star.velocity -= 0.05;
+        //if (star.scale.x > 1) star.scale.x -= 0.5;
+        //if (star.velocity > 0.2) star.velocity -= 0.05;
 
         // Update the star position
-        star.position.y -= star.velocity;
+        //star.position.z += 1;
 
         // Update the vertices y values if too far
-        if (star.position.y < -200) star.position.y = 200;
+        //if (star.position.x < -200) star.position.x = 1000;
     }
 }
 
@@ -113,15 +111,15 @@ const MoveForward = () => {
         LightSpeedCounter++;
 
         // Change star scale
-        star.scale.y += 0.3;
+        star.scale.x += 0.3;
 
         // Integrate Uniform Velocity
         if (star.velocity < 7)
             star.velocity += STAR_ACCELERATION;
-        star.position.y -= star.velocity;
+        star.position.x -= star.velocity;
 
         // Update the vertices y values if too far
-        if (star.position.y < -200) star.position.y = 200;
+        if (star.position.x < -200) star.position.x = 200;
     }
 }
 
@@ -130,12 +128,16 @@ const MoveBackward = () => {
     for (let i = 0; i < STAR_GROUP.children.length; i++) {
         let star = STAR_GROUP.children[i];
         // Integrate Uniform Velocity
-        star.position.y += 0.1;
+        star.position.x += 0.05;
         // Update the vertices y values if too far
-        if (star.position.y > 200) star.position.y = -200;
+        if (star.position.x > 200) star.position.x = -200;
     }
 }
 
+// The animate() function is used to manipulate the
+// objects within the scene
+// The animate() function is used to manipulate the
+// objects within the scene
 // The animate() function is used to manipulate the
 // objects within the scene
 const animate = async () => {
@@ -143,19 +145,35 @@ const animate = async () => {
 
     // If The lightspeed has been engaged, move forward with acceleration,
     // If the LightSpeedCounter reaches COUNTER_MAX then disengage light speed
-    if (LightSpeedEngaged == 1) LightSpeedCounter > COUNTER_MAX ? LightSpeedEngaged = 2 : MoveForward();
+    if (LightSpeedEngaged === 1) {
+        if (LightSpeedCounter > COUNTER_MAX) {
+            LightSpeedEngaged = 2;
+        } else {
+            MoveForward();
+        }
+    } else if (LightSpeedEngaged === 2) {
+        MoveForwardNeutral();
+    } else {
+        MoveBackward();
+    }
 
-    // Else if, the end of light speed, correct all stars
-    // and move forward uniformly
-    else if (LightSpeedEngaged == 2) MoveForwardNeutral();
+    // Apply sine wave motion to the spheres
+    const time = Date.now() * 0.001; // Convert current time to seconds
 
-    // Else, move the stars backwards (start)
-    else MoveBackward();
+    for (let i = 0; i < STAR_GROUP.children.length; i++) {
+        const sphere = STAR_GROUP.children[i];
+        const amplitude = Math.random() * 10 + 5; // Random amplitude for each sphere
+        const frequency = Math.random() * 4 + 1; // Random frequency for each sphere
+
+        const zOffset = Math.sin(time * frequencies[i]) * amplitudes[i];
+        sphere.position.z += zOffset;
+    }
 
     // Bloom Composer and Scene Renderer
-    BloomComposer.render();
     Renderer.render(SCENE, CAMERA);
 };
+
+
 
 // The setScene() function is the primary function
 // for updating the scene data.
@@ -166,13 +184,6 @@ export const SetScene = async (canvas) => {
     Renderer.setPixelRatio(window.devicePixelRatio * 0.5);
     Renderer.autoClear = false;
 
-    // Bloom Composer
-    BloomComposer = new EffectComposer(Renderer);
-    BloomComposer.setSize(window.innerWidth, window.innerHeight);
-    BloomComposer.renderToScreen = true;
-    BloomComposer.addPass(RENDER_SCENE);
-    BloomComposer.addPass(BLOOM_PASS);
-    BloomComposer.render();
 
     // Size the scene
     await resize();
